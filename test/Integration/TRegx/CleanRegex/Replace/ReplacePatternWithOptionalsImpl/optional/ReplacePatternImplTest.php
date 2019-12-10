@@ -30,14 +30,17 @@ class ReplacePatternImplTest extends TestCase
         $pattern = InternalPattern::pcre('//');
 
         $instance = $this->mock();
-        $factory = $this->mockFactory($instance);
+        /** @var ReplacePatternFactory|MockObject $factory */
+        $factory = $this->createMock(ReplacePatternFactory::class);
+        $factory->method('create')->willReturn($instance);
+
         $underTest = new ReplacePatternImpl($this->mock(), $pattern, 'subject', 0, $factory);
 
         // then
         $factory->expects($this->once())
             ->method('create')
             ->with($pattern, 'subject', 0, $substitute)
-            ->willReturn('delegated');
+            ->willReturn($instance);
 
         // when
         $result = $underTest->$method(...$arguments);
@@ -68,17 +71,5 @@ class ReplacePatternImplTest extends TestCase
         $delegate = $this->createMock(SpecificReplacePattern::class);
         $delegate->method('with')->willReturn($result ?? '');
         return $delegate;
-    }
-
-    /**
-     * @param SpecificReplacePattern $result
-     * @return ReplacePatternFactory|MockObject
-     */
-    private function mockFactory(SpecificReplacePattern $result): ReplacePatternFactory
-    {
-        /** @var ReplacePatternFactory|MockObject $factory */
-        $factory = $this->createMock(ReplacePatternFactory::class);
-        $factory->method('create')->willReturn($result);
-        return $factory;
     }
 }

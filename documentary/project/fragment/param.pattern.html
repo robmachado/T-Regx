@@ -1,0 +1,27 @@
+<p>A delimited pattern to search for, with optional flags.</p>
+
+Examples of delimited patterns with flags:
+<ul>
+  <li>`/^[a-z]+$/m` - matches: start of a line, one or more letters, end of line</li>
+  <li>`#https?://(www\.)?\.[a-z]+\.[a-z]+#i` - matches: `http` or `https`, `://`, optional `www.`, one or more letters, `"."`
+    character, one or more letters; all case-insensitive
+  </li>
+</ul>
+
+Available flags:
+<ul>
+  <li>
+    i (case insensitive) - If this modifier is set, letters in the pattern match both upper and lower case letters.
+  </li>
+  <li>m (multiline) - By default, PCRE treats the subject string as consisting of a single "line" of characters (even
+    if it actually contains several newline characters (e.g. `"\n"` or `"\r"`). The "start of line" metacharacter
+    (`^`) matches only at the start of the string, while the "end of line" metacharacter (`$`) matches only at the
+    end of the string. This is the same as Perl.
+
+    <p>When this modifier is set, the "start of line" and "end of line" constructs match immediately following or
+      immediately before any newline in the subject string, respectively, as well as at the very start and end. </p>
+
+    <p>In other words, if you consider a multiline string, `^` and `$` will normally match the start and the end of the
+      whole string; but if `m` is used, `^` and `$` will match each line beginning and end.</p>
+  </li>
+</ul>

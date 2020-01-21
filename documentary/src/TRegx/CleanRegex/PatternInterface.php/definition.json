@@ -1,0 +1,32 @@
+{
+  "test": {
+    "return": ""
+  },
+  "fails": {
+    "return": ""
+  },
+  "match": {
+    "return": ""
+  },
+  "replace": {
+    "return": ""
+  },
+  "remove": {
+    "return": ""
+  },
+  "forArray": {
+    "return": ""
+  },
+  "split": {
+    "return": ""
+  },
+  "count": {
+    "return": ""
+  },
+  "valid": {
+    "return": ""
+  },
+  "delimiter": {
+    "return": ""
+  }
+}

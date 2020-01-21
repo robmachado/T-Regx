@@ -1,0 +1,108 @@
+{
+  "methods": {
+    "match": {
+      "manual": {
+        "php": "https://www.php.net/manual/en/function.preg-match.php",
+        "t-regx": "https://t-regx.com/docs/match-first"
+      }
+    },
+    "match_all": {
+      "manual": {
+        "php": "https://www.php.net/manual/en/function.preg-match-all.php",
+        "t-regx": "https://t-regx.com/docs/match"
+      }
+    },
+    "replace": {
+      "manual": {
+        "php": "https://www.php.net/manual/en/function.preg-replace.php",
+        "t-regx": "https://t-regx.com/docs/replace-with"
+      }
+    },
+    "replace_callback": {
+      "manual": {
+        "php": "https://www.php.net/manual/en/function.preg-replace-callback.php",
+        "t-regx": "https://t-regx.com/docs/replace-callback"
+      }
+    },
+    "replace_callback_array": {
+      "manual": {
+        "php": "https://www.php.net/manual/en/function.preg-replace-callback-array.php",
+        "t-regx": null
+      }
+    },
+    "filter": {
+      "manual": {
+        "php": "https://www.php.net/manual/en/function.preg-filter.php",
+        "t-regx": null
+      }
+    },
+    "split": {
+      "manual": {
+        "php": "https://www.php.net/manual/en/function.preg-split.php",
+        "t-regx": "https://t-regx.com/docs/split"
+      }
+    },
+    "grep": {
+      "manual": {
+        "php": "https://www.php.net/manual/en/function.preg-grep.php",
+        "t-regx": "https://t-regx.com/docs/filter"
+      }
+    },
+    "grep_keys": {
+      "manual": {
+        "php": null,
+        "t-regx": "https://t-regx.com/docs/filter#filter-by-keys"
+      }
+    },
+    "quote": {
+      "see": [
+        "Pattern::quote()", "Pattern::unquote()", "PreparedPattern"
+      ],
+      "link": [
+        "https://t-regx.com/docs/handling-user-input"
+      ],
+      "manual": {
+        "php": "https://www.php.net/manual/en/function.preg-quote.php",
+        "t-regx": "https://t-regx.com/docs/quoting"
+      }
+    },
+    "last_error": {
+      "manual": {
+        "php": "https://www.php.net/manual/en/function.preg-last-error.php",
+        "t-regx": null
+      }
+    },
+    "last_error_constant": {
+      "manual": {
+        "php": "https://www.php.net/manual/en/function.preg-last-error.php",
+        "t-regx": null
+      }
+    },
+    "error_constant": {
+      "manual": {
+        "php": "https://www.php.net/manual/en/function.preg-last-error.php",
+        "t-regx": null
+      }
+    }
+  },
+  "groups": {
+    "see": [
+      ["match", "match_all", "replace"], ["replace_callback", "replace_callback_array", "filter"], ["grep", "grep_keys"], ["last_error", "last_error_constant", "error_constant"]
+    ],
+    "throws": [
+      {
+        "methods": ["match", "match_all", "replace", "replace_callback", "replace_callback_array", "filter", "grep", "grep_keys", "split"],
+        "exceptions": ["PregException"]
+      }
+    ]
+  },
+  "*": {
+    "see": [
+      "pattern()", "Pattern::of()"
+    ],
+    "link": [
+      "https://www.regular-expressions.info/unicode.html"
+    ],
+    "throws": []
+  }
+}

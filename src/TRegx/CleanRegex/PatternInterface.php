@@ -10,51 +10,87 @@ interface PatternInterface
 {
     /**
      * {@documentary:test}
+     *
+     * @param string $subject
+     *
+     * @return bool
      */
     public function test(string $subject): bool;
 
     /**
-     * {@documentary:test}
+     * {@documentary:fails}
+     *
+     * @param string $subject
+     *
+     * @return bool
      */
     public function fails(string $subject): bool;
 
     /**
-     * {@documentary:test}
+     * {@documentary:match}
+     *
+     * @param string $subject
+     *
+     * @return MatchPattern
      */
     public function match(string $subject): MatchPattern;
 
     /**
-     * {@documentary:test}
+     * {@documentary:replace}
+     *
+     * @param string $subject
+     *
+     * @return ReplaceLimit
      */
     public function replace(string $subject): ReplaceLimit;
 
     /**
-     * {@documentary:test}
+     * {@documentary:remove}
+     *
+     * @param string $subject
+     *
+     * @return RemoveLimit
      */
     public function remove(string $subject): RemoveLimit;
 
     /**
-     * {@documentary:test}
+     * {@documentary:forArray}
+     *
+     * @param string[] $haystack
+     *
+     * @return ForArrayPattern
      */
     public function forArray(array $haystack): ForArrayPatternImpl;
 
     /**
-     * {@documentary:test}
+     * {@documentary:split}
+     *
+     * @param string $subject
+     *
+     * @return array
      */
     public function split(string $subject): array;
 
     /**
-     * {@documentary:test}
+     * {@documentary:count}
+     *
+     * @param string $subject
+     *
+     * @return int
      */
     public function count(string $subject): int;
 
     /**
-     * {@documentary:test}
+     * {@documentary:valid}
+     *
+     * @return bool
      */
     public function valid(): bool;
 
     /**
-     * {@documentary:test}
+     * {@documentary:delimiter}
+     *
+     * @return string
      */
     public function delimiter(): string;
 }

@@ -1,0 +1,9 @@
+{
+  "pattern": {
+    "param": {
+      "pattern": "string",
+      "flags": ["string", "optional"]
+    },
+    "return-type": "\\TRegx\\CleanRegex\\PatternInterface"
+  }
+}

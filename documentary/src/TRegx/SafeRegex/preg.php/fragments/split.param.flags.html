@@ -1,0 +1,23 @@
+<ul>
+  <li>
+    `PREG_SPLIT_DELIM_CAPTURE` -
+    By default, separator is not included in the returned array. When this flag is used,
+    the capturing groups from `pattern` are appended after each subpart. Unmatched capturing
+    groups are represented as an empty string `""`. Any trailing unmatched groups are ignored.
+  </li>
+  <li>
+    `PREG_SPLIT_OFFSET_CAPTURE` -
+    By default, string subparts and separators are present as `string` in the returned array (e.g. `['Foo', 'Bar']`).
+    When this flag is used, the returned array contains `tuple` of: subpart and its corresponding offset (e.g. `[['Foo', 2], ['Bar', 6']]`).
+  </li>
+  <li>
+    `PREG_SPLIT_NO_EMPTY` -
+    Removes any empty strings from the returned array, that is:
+    <ul>
+      <li>empty matches (two separators near each other, without any subpart in between) and matched: `""`</li>
+      <li>matched separator capturing group of length 0, being an empty strings: `""`</li>
+      <li>not matched separator capturing group, absence of which would be represented as an empty string: `""`</li>
+    </ul>
+    Using `PREG_SPLIT_OFFSET_CAPTURE | PREG_SPLIT_NO_EMPTY` will remove the same elements.
+  </li>
+</ul>

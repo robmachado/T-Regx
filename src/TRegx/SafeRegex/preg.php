@@ -4,7 +4,6 @@ namespace TRegx\SafeRegex;
 use TRegx\SafeRegex\Constants\PregConstants;
 use TRegx\SafeRegex\Constants\PregMessages;
 use TRegx\SafeRegex\Exception\InvalidReturnValueException;
-use TRegx\SafeRegex\Exception\PregException;
 use TRegx\SafeRegex\Guard\GuardedExecution;
 use TRegx\SafeRegex\Guard\Strategy\PregFilterSuspectedReturnStrategy;
 use TRegx\SafeRegex\Guard\Strategy\PregReplaceSuspectedReturnStrategy;
@@ -13,14 +12,7 @@ use TRegx\SafeRegex\Guard\Strategy\SilencedSuspectedReturnStrategy;
 class preg
 {
     /**
-     * Perform a regular expression match
-     * @link https://php.net/manual/en/function.preg-match.php
-     *
-     * @return int Returns 1 if the pattern matches given subject, 0 if it does not
-     *
-     * @param-out array $matches
-     *
-     * @throws PregException
+     * {@documentary:match}
      */
     public static function match(string $pattern, string $subject, array &$matches = null, int $flags = 0, int $offset = 0): int
     {
@@ -28,17 +20,9 @@ class preg
             return @\preg_match($pattern, $subject, $matches, $flags, $offset) ? 1 : 0;
         });
     }
-
-    /**
-     * Perform a global regular expression match
-     * @link https://php.net/manual/en/function.preg-match-all.php
-     *
-     * @return int Number of full pattern matches (which might be zero)
-     *
-     * @param-out array $matches
-     *
-     * @throws PregException
-     */
+  /**
+   * {@documentary:match_all}
+   */
     public static function match_all(string $pattern, string $subject, array &$matches = null, $flags = PREG_PATTERN_ORDER, $offset = 0): int
     {
         return GuardedExecution::invoke('preg_match_all', function () use ($offset, $flags, &$matches, $subject, $pattern) {
@@ -47,21 +31,7 @@ class preg
     }
 
     /**
-     * Perform a regular expression search and replace
-     * @link https://php.net/manual/en/function.preg-replace.php
-     *
-     * @param string|string[] $pattern
-     * @param string|string[] $replacement
-     * @param string|string[] $subject
-     * @return string|string[]
-     *
-     * @param-out int $count
-     *
-     * @template T of string|string[]
-     * @psalm-param T $subject
-     * @psalm-return T
-     *
-     * @throws PregException
+     * {@documentary:replace}
      */
     public static function replace($pattern, $replacement, $subject, int $limit = -1, int &$count = null)
     {
@@ -71,20 +41,7 @@ class preg
     }
 
     /**
-     * Perform a regular expression search and replace using a callback
-     * @link https://php.net/manual/en/function.preg-replace-callback.php
-     *
-     * @param string|string[] $pattern
-     * @param string|string[] $subject
-     * @return string|string[]
-     *
-     * @param-out int $count
-     *
-     * @template T of string|string[]
-     * @psalm-param T $subject
-     * @psalm-return T
-     *
-     * @throws PregException
+     * {@documentary:replace_callback}
      */
     public static function replace_callback($pattern, callable $callback, $subject, int $limit = -1, int &$count = null)
     {
@@ -94,20 +51,7 @@ class preg
     }
 
     /**
-     * Perform a regular expression search and replace using callbacks
-     * @link https://php.net/manual/en/function.preg-replace-callback-array.php
-     *
-     * @param array<string,callable> $patterns_and_callbacks An associative array mapping patterns (keys) to callbacks (values)
-     * @param string|string[] $subject
-     * @return string|string[]
-     *
-     * @param-out int $count
-     *
-     * @template T of string|string[]
-     * @psalm-param T $subject
-     * @psalm-return T
-     *
-     * @throws PregException
+     * {@documentary:replace_callback_array}
      */
     public static function replace_callback_array($patterns_and_callbacks, $subject, int $limit = -1, int &$count = null)
     {
@@ -133,21 +77,7 @@ class preg
     }
 
     /**
-     * Perform a regular expression search and replace
-     * @link https://php.net/manual/en/function.preg-filter.php
-     *
-     * @param string|string[] $pattern
-     * @param string|string[] $replacement
-     * @param string|string[] $subject
-     * @return string|string[]
-     *
-     * @param-out int $count
-     *
-     * @template T of string|string[]
-     * @psalm-param T $subject
-     * @psalm-return T
-     *
-     * @throws PregException
+     * {@documentary:filter}
      */
     public static function filter($pattern, $replacement, $subject, int $limit = -1, int &$count = null)
     {
@@ -157,12 +87,7 @@ class preg
     }
 
     /**
-     * Split string by a regular expression
-     * @link https://php.net/manual/en/function.preg-split.php
-     *
-     * @return string[]|array[]
-     *
-     * @throws PregException
+     * {@documentary:split}
      */
     public static function split(string $pattern, string $subject, int $limit = -1, int $flags = 0)
     {
@@ -172,10 +97,7 @@ class preg
     }
 
     /**
-     * Return array entries that match the pattern
-     * @link https://php.net/manual/en/function.preg-grep.php
-     *
-     * @throws PregException
+     * {@documentary:grep}
      */
     public static function grep(string $pattern, array $input, int $flags = 0): array
     {
@@ -187,14 +109,16 @@ class preg
         }, new SilencedSuspectedReturnStrategy());
     }
 
+    /**
+     * {@documentary:grep_keys}
+     */
     public static function grep_keys(string $pattern, array $input, int $flags = 0): array
     {
         return \array_intersect_key($input, \array_flip(self::grep($pattern, \array_keys($input), $flags)));
     }
 
     /**
-     * Quote regular expression characters
-     * @link https://php.net/manual/en/function.preg-quote.php
+     * {@documentary:quote}
      */
     public static function quote(string $string, ?string $delimiter = null): string
     {
@@ -205,16 +129,7 @@ class preg
     }
 
     /**
-     * Returns the error code of the last PCRE regex execution
-     * @link https://php.net/manual/en/function.preg-last-error.php
-     *
-     * @return int one of the following constants (explained on their own page):
-     * <b>PREG_NO_ERROR</b>
-     * <b>PREG_INTERNAL_ERROR</b>
-     * <b>PREG_BACKTRACK_LIMIT_ERROR</b> (see also pcre.backtrack_limit)
-     * <b>PREG_RECURSION_LIMIT_ERROR</b> (see also pcre.recursion_limit)
-     * <b>PREG_BAD_UTF8_ERROR</b>
-     * <b>PREG_BAD_UTF8_OFFSET_ERROR</b> (since PHP 5.3.0)
+     * {@documentary:last_error}
      */
     public static function last_error(): int
     {
@@ -231,11 +146,17 @@ class preg
         // @codeCoverageIgnoreEnd
     }
 
+    /**
+     * {@documentary:last_error_constant}
+     */
     public static function last_error_constant(): string
     {
         return (new PregConstants())->getConstant(\preg_last_error());
     }
 
+    /**
+     * {@documentary:last_error_msg}
+     */
     public static function last_error_msg(): string
     {
         return (new PregMessages())->getConstant(\preg_last_error());

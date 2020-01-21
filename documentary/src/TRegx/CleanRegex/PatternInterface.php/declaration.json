@@ -1,0 +1,56 @@
+{
+  "test": {
+    "param": {
+      "subject": "string"
+    },
+    "return-type": "bool"
+  },
+  "fails": {
+    "param": {
+      "subject": "string"
+    },
+    "return-type": "bool"
+  },
+  "match": {
+    "param": {
+      "subject": "string"
+    },
+    "return-type": "MatchPattern"
+  },
+  "replace": {
+    "param": {
+      "subject": "string"
+    },
+    "return-type": "ReplaceLimit"
+  },
+  "remove": {
+    "param": {
+      "subject": "string"
+    },
+    "return-type": "RemoveLimit"
+  },
+  "forArray": {
+    "param": {
+      "haystack": "string[]"
+    },
+    "return-type": "ForArrayPattern"
+  },
+  "split": {
+    "param": {
+      "subject": "string"
+    },
+    "return-type": "array"
+  },
+  "count": {
+    "param": {
+      "subject": "string"
+    },
+    "return-type": "int"
+  },
+  "valid": {
+    "return-type": "bool"
+  },
+  "delimiter": {
+    "return-type": "string"
+  }
+}

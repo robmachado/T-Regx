@@ -1,0 +1,84 @@
+{
+  "match": {
+    "definition": "Performs a single regular expression match. Returns the number of occurrences found (0 or 1). Optionally, populates `matches` with the first match and optional capturing groups. The structure of the `matches` result depends on `flags`.",
+    "return": "`1` if the `pattern` matches given `subject`, `0` if it does not"
+  },
+  "match_all": {
+    "definition": "Performs a global regular expression match. Returns the number of occurrences found (0 or more). Optionally, populates `matches` with the matched occurrences and their optional capturing groups. The structure of the `matches` result depends strongly on `flags`.",
+    "return": "the number of `pattern` matched occurrences (which might be zero)"
+  },
+  "replace": {
+    "definition": "Performs a regular expression replace with a constant value.",
+    "return": {
+      "string": {
+        "when": "if `subject` is a `string`",
+        "return": "a new string, :with (:unless)"
+      },
+      "string[]": {
+        "when": "if `subject` is an `array`",
+        "return": "an array of new strings, all of them :with (:unless)"
+      }
+    },
+    "const": {
+      "with": "with replaced occurrences of `pattern`",
+      "unless": "unless the `pattern` wasn't matched, in this case the `subject` is returned unchanged"
+    }
+  },
+  "replace_callback": {
+    "inherit": "replace",
+    "definition": "Performs a regular expression replace with a callback. "
+  },
+  "replace_callback_array": {
+    "inherit": "filter",
+    "definition": "Performs a regular expression replace with a callback. "
+  },
+  "filter": {
+    "definition": "Performs a regular expression search and replace",
+    "return": {
+      "string": {
+        "when": "if the `subject` parameter is a `string`",
+        "return": "unmodified `subject` if it matches the `pattern`, or `null` if it doesn't"
+      },
+      "string[]": {
+        "when": "if the `subject` parameter is an `array`",
+        "return": "an array containing only elements matched by the `pattern`"
+      }
+    }
+  },
+  "split": {
+    "definition": "Splits string by a regular expression separator. The matched occurrence treated as a separator will not be included in the result, unless `PREG_SPLIT_DELIM_CAPTURE` is passed to `flags`.",
+    "return": {
+      "string[]": {
+        "when": "by default",
+        "return": "an array of `string`, containing substrings of `subject` split along boundaries matched by `pattern` (e.g. `['Foo', 'Bar']`), "
+      },
+      "array[]": {
+        "when": "if flag `PREG_SPLIT_OFFSET_CAPTURE` is used",
+        "return": "an array of `tuple`, which contain a substring of `subject` at index 0 and its offset at index 1 (e.g. `[['Foo', 2], ['Bar', 6]`), "
+      }
+    }
+  },
+  "grep": {
+    "definition": "Filters array entries that match the pattern",
+    "return": "a filtered array indexed using the keys from the `input` array"
+  },
+  "grep_keys": {
+    "definition": "Filters array entries with keys that match the pattern",
+    "return": "a filtered array indexed using the keys from the `input` array"
+  },
+  "quote": {
+    "return": "the quoted (escaped) string"
+  },
+  "last_error": {
+    "definition": "Returns the error code of the last `preg_*()` method execution (as int)",
+    "return": "error code of the last `preg_*()` method execution"
+  },
+  "last_error_constant": {
+    "definition": "Returns the error name of the last `preg_*()` method execution (as string)",
+    "return": "error name of the last `preg_*()` method execution"
+  },
+  "error_constant": {
+    "definition": "Returns the error name for a given error code",
+    "return": "error name of a given error code"
+  }
+}

@@ -1,0 +1,12 @@
+<p>
+  Puts a backslash in `string`, before every character, that is a part of the regular expression
+  syntax. It's crucial when using a runtime string (which may contain special regex characters)
+  that needs to matched as a regular expression.
+</p>
+<p>The special regular expression characters are: . \ + * ? [ ^ ] $ ( ) { } = ! < > | : - #</p>
+<p>Note that / is not a special regular expression character.</p>
+<br>
+<p>Notes:</p>
+<ul>
+  <li>Note, that `preg::quote()` is not meant to be applied to the $replacement string(s) of `preg_replace()` etc.</li>
+</ul>

@@ -1,0 +1,126 @@
+{
+  "match": {
+    "param": {
+      "pattern": "string",
+      "subject": "string",
+      "flags": {
+        "bit-sum": ["PREG_OFFSET_CAPTURE", "PREG_UNMATCHED_AS_NULL"]
+      },
+      "matches": ["string[]", "optional", "&ref"],
+      "offset": ["int", "optional", "&ref"]
+    },
+    "return-type": "int"
+  },
+  "match_all": {
+    "param": {
+      "pattern": "string",
+      "subject": "string",
+      "matches": ["array[]", "optional", "&ref"],
+      "flags": {
+        "bit-sum": ["PREG_PATTERN_ORDER", "PREG_SET_ORDER", "PREG_OFFSET_CAPTURE", "PREG_UNMATCHED_AS_NULL"]
+      },
+      "offset": ["int", "optional", "&ref"]
+    },
+    "return-type": "int"
+  },
+  "replace": {
+    "param": {
+      "pattern": ["string", "string[]"],
+      "replacement": ["string", "string[]"],
+      "subject": ["string", "string[]"],
+      "limit": ["int", "optional"],
+      "count": ["int", "optional", "&ref"]
+    },
+    "template": {
+      "T": ["string", "string[]"]
+    },
+    "return-type": ["string", "string[]"]
+  },
+  "replace_callback": {
+    "param": {
+      "pattern": "string",
+      "callback": "callable",
+      "subject": ["string", "string[]"],
+      "limit": ["int", "optional"],
+      "count": ["int", "optional", "&ref"]
+    },
+    "template": {
+      "T": ["string", "string[]"]
+    },
+    "return-type": ["string", "string[]"]
+  },
+  "replace_callback_array": {
+    "param": {
+      "patterns_and_callbacks": {
+        "type": {
+          "type": "array",
+          "keys": "string",
+          "values": "callable"
+        }
+      },
+      "subject": ["string", "string[]"],
+      "limit": ["int", "optional"],
+      "count": ["int", "optional", "&ref"]
+    },
+    "template": {
+      "T": ["string", "string[]"]
+    },
+    "return-type": ["string", "string[]"]
+  },
+  "filter": {
+    "param": {
+      "pattern": ["string", "string[]"],
+      "replacement": ["string", "string[]"],
+      "subject": ["string", "string[]"],
+      "limit": ["int", "optional"],
+      "count": ["int", "optional", "&ref"]
+    },
+    "template": {
+      "T": ["string", "string[]"]
+    },
+    "return-type": ["string", "string[]"]
+  },
+  "split": {
+    "param": {
+      "pattern": "string",
+      "subject": "string",
+      "limit": ["int", "optional"],
+      "flags": {
+        "bit-sum": ["PREG_SPLIT_NO_EMPTY", "PREG_SPLIT_DELIM_CAPTURE", "PREG_SPLIT_OFFSET_CAPTURE"]
+      }
+    },
+    "return-type": ["string[]", "array[]"]
+  },
+  "grep": {
+    "param": {
+      "pattern": "string",
+      "input": "array",
+      "flags": {
+        "bit-sum": ["PREG_GREP_INVERT"]
+      }
+    },
+    "return-type": "array"
+  },
+  "grep_keys": {
+    "inherit": "grep"
+  },
+  "quote": {
+    "param": {
+      "string": "string",
+      "delimiter": ["string", "optional"]
+    },
+    "return-type": "string"
+  },
+  "last_error": {
+    "return-type": "int"
+  },
+  "last_error_constant": {
+    "return-type": "string"
+  },
+  "error_constant": {
+    "param": {
+      "error": "int"
+    },
+    "return-type": "string"
+  }
+}
